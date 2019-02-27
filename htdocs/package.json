@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "clipboard.js": "^1.0.1",
+    "popper.js": "^1.14.7"
+  }
+}
