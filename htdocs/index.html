@@ -79,9 +79,9 @@
 
           <hr />
           <div id="iframe">
-            <iframe src="" scrolling="no" id="iFrameResizer0" style="overflow: hidden; height: 456px;"
+            <iframe src="" scrolling="no" id="iFrameResizer0" style="overflow: hidden; height: 700px;border: none;"
               width="100%"></iframe>
-            <!----iframe src="http://cornelia-geissler.de/temp_2/dpa_1/test2.html" scrolling="no" id="iFrameResizer0"
+            <!--iframe src="http://cornelia-geissler.de/temp_2/dpa_1/test2.html" scrolling="no" id="iFrameResizer0"
               style="overflow: hidden; height: 456px;" width="100%"></iframe-->
 
           </div>
@@ -118,7 +118,7 @@
       }, {});
     }
 
-    var sourcecode = '<div data-pym-src="%s">Wird geladen...</div><script type="text/javascript" src="https://s3.eu-central-1.amazonaws.com/dpa-newslab-prototype-webspace/dpa-stories/embed/js/iframeResizer.js">' + '</' + 'script>';
+    var sourcecode = '<iframe src="%s" scrolling="no" id="iFrameResizer0" style="overflow: hidden; height: 700px;" width="100%"></iframe><script type="text/javascript" src="js/iframeResizer.js">' + '</' + 'script><script type="text/javascript">iFrameResize({});' + '</' + 'script>';
     var p = parseParams(document.location.search.substr(1));
     // var pymParent = new pym.Parent('here', p["url"]);
     thisversion = sourcecode.replace("%s", p["url"]);
