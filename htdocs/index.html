@@ -118,7 +118,7 @@
       }, {});
     }
 
-    var sourcecode = '<iframe src="%s" scrolling="no" id="iFrameResizer0" style="overflow: hidden; height: 700px;" width="100%"></iframe><script type="text/javascript" src="js/iframeResizer.js">' + '</' + 'script><script type="text/javascript">iFrameResize({});' + '</' + 'script>';
+    var sourcecode = '<iframe src="%s" scrolling="no" id="iFrameResizer0" style="overflow: hidden; height: 700px;" width="100%"></iframe><script type="text/javascript" src="https://stories-embed-code.dpa-prototype.de/js/iframeResizer.js">' + '</' + 'script><script type="text/javascript">iFrameResize({});' + '</' + 'script>';
     var p = parseParams(document.location.search.substr(1));
     // var pymParent = new pym.Parent('here', p["url"]);
     thisversion = sourcecode.replace("%s", p["url"]);
