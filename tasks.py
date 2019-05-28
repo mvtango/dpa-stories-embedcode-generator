@@ -1,10 +1,18 @@
 from invoke import task
 import os
+import socket
 
 HERE = os.path.split(__file__)[0]
 
 PWD = os.environ.get("PWD")
 MYDIR = os.path.split(PWD)[1]
+
+def highport():
+    s=socket.socket()
+    s.bind(("", 0))
+    port = s.getsockname()[1]
+    s.close()
+    return port
 
 
 @task
@@ -19,10 +27,21 @@ def sync(c):
 
 @task
 def serve(c):
-    c.run(f"""
-        livereload htdocs/
-    """)
 
+    PORT=highport()
+
+    c.run(f"""
+
+        cd {HERE}
+        {{
+          sleep 4
+          echo opening browser
+          xdg-open http://localhost:{PORT}
+        }} &
+        livereload --port {PORT} htdocs/
+
+
+    """)
 
 @task
 def introspect(c):
