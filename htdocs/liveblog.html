@@ -15,6 +15,10 @@
 
   <!-- Custom styles for this template -->
   <link href="starter-template.css" rel="stylesheet">
+    <style>
+        blockquote { margin-left: 2em; margin-right: 2em; }
+        .hidden { display: none; }
+    </style>
 </head>
 
 <body>
@@ -57,10 +61,26 @@
   <main role="main">
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="container">
     <div class="jumbotron">
       <div class="container">
-        <p>Bitte kopieren Sie den <i>Embed Code</i> aus dem Feld unten an eine geeignete Stelle in ihrem
-          Redaktionssystem.</p>
+        <p>Wenn Sie einen Embed Code verwenden möchten, kopieren Sie bitte den Code aus dem Feld unten an eine geeignete Stelle in ihrem Redaktionssystem.</p>
+        <p>
+         <blockquote>
+          <textarea style="width: 100%; height: 80px;" id="embedcode" readonly>
+            </textarea>
+          <input type="button" class="btn btn-light" value="Code in Zwischenablage kopieren"
+            onClick="Clipboard.copy($('#embedcode').val());var $t=$(this),$c=$t.attr('value');$t.attr('value','Kopiert');setTimeout(function() { $t.attr('value',$c); },1000);" />
+         </blockquote>
+        </p>
+        <div id="storytile_text" class="hidden">
+            <p><br></p>
+        <p> Um den Liveblog bei Storytile einzurichten, klicken Sie bitte den Button unten. Sie müssen zum Einrichten ihr Storytile-Login parat haben.
+        <blockquote>
+        <a id="storytile_button" role="button" class="btn btn-light" href="#"><span data-content="title"></span> bei Storytile einrichten</a>
+        </blockquote>
+        </p>
+        </div>
       </div>
     </div>
 
@@ -70,14 +90,6 @@
         <div class="col-md-2">
         </div>
         <div class="col-md-8">
-          <p>Embed Code</p>
-          <textarea style="width: 100%; height: 80px;" id="embedcode" readonly>
-            </textarea>
-          <input type="button" value="Code in Zwischenablage kopieren"
-            onClick="Clipboard.copy($('#embedcode').val());var $t=$(this),$c=$t.attr('value');$t.attr('value','Kopiert');setTimeout(function() { $t.attr('value',$c); },1000);" />
-
-
-          <hr />
           <h2><span data-content="title"></span></h2>
           <div id="iframe" style="margin:0; padding:0">
 
@@ -89,7 +101,7 @@
     <hr>
 
     </div> <!-- /container -->
-
+   </div>
   </main>
 
 
@@ -125,6 +137,11 @@
     $('[data-content="title"]').html(p.title);
     document.title = p.title + ' ' + document.title;
     
+    if (p.storytile_url != null) {
+        var storytile_url = `https://edit.storytile.net/event/create?dpalbname=${encodeURIComponent(p.title)}&dpalbendpoint=https://dpa-api.liveblog.pro/api/&dpalbsource=${encodeURIComponent(p.storytile_url)}&dpalbtype=liveblog&dpalbfilter=${encodeURIComponent(p.storytile_filter)}`;
+        $("#storytile_button").attr("href",storytile_url);
+        $("#storytile_text").removeClass("hidden");
+    }
 
 
   </script>
