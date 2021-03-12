@@ -5,9 +5,7 @@
     "iframe-resizer": "^4.1.0",
     "popper.js": "^1.14.7"
   },
-  "scripts" : {
-
-    "install" : "make install"
-
+  "scripts": {
+    "install": "make install"
   }
 }
